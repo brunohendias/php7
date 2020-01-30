@@ -5,31 +5,22 @@
 	session_start();
 
 	class Cadastro {
+		private $connection;
 		private $nome;
 		private $sobrenome;
 		private $email;
 		private $password;
-		private $connection;
-		public $msg;
 
-		public function setNome($nome){
+		public function setValue($connection, $nome $sobrenome, $email, $password){
 			$nome = mysqli_escape_string($this->connection, $nome);
-			$this->nome = $nome;
-		}
-		public function setSobrenome($sobrenome){
 			$sobrenome = mysqli_escape_string($this->connection, $sobrenome);
-			$this->sobrenome = $sobrenome;
-		}
-		public function setEmail($email){
 			$email = filter_var($email, FILTER_SANITIZE_EMAIL);
 			$email = mysqli_escape_string($this->connection, $email);
-			$this->email = $email;
-		}
-		public function setPassword($password){
 			$password = mysqli_escape_string($this->connection, $password);
+			$this->nome = $nome;
+			$this->sobrenome = $sobrenome;
+			$this->email = $email;
 			$this->password = $password;
-		}
-		public function setConnection($connection) {
 			$this->connection = $connection;
 		}
 
@@ -45,19 +36,15 @@
 	}
 
 	class Loga {
+		private $connection;
 		private $email;
 		private $password;
-		private $connection;
 
-		public function setEmail($email) {
+		public function setValues($connection, $email, $password) {
 			$email = mysqli_escape_string($this->connection, $email);
-			$this->email = $email;
-		}
-		public function setPassword($password) {
 			$password = mysqli_escape_string($this->connection, $password);
+			$this->email = $email;
 			$this->password = $password;
-		}
-		public function setConnection($connection) {
 			$this->connection = $connection;
 		}
 
@@ -80,18 +67,12 @@
 	
 	if(isset($_POST['btn-logar'])):
 		$novoLogin = new Loga();
-		$novoLogin->setEmail($_POST['email']);
-		$novoLogin->setPassword($_POST['password']);
-		$novoLogin->setConnection($connection);
+		$novoLogin->setValues($_POST['email'], $_POST['password'], $connection);
 		$novoLogin->logar();
 
 	elseif(isset($_POST['btn-cadastrar'])):
 		$novoCadastro = new Cadastro();
-		$novoCadastro->setConnection($connection);
-		$novoCadastro->setNome($_POST['nome']); 
-		$novoCadastro->setSobrenome($_POST['sobrenome']);
-		$novoCadastro->setEmail($_POST['email']); 
-		$novoCadastro->setPassword($_POST['password']);
+		$novoCadastro->setValues($connection, $_POST['nome'], $_POST['sobrenome'], $_POST['email'], $_POST['password']);
 		$novoCadastro->cadastrar();
 	endif;
 	header('location: index.php');
