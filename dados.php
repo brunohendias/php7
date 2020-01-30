@@ -60,7 +60,7 @@
 					$_SESSION['mensagem'] = "Email/Senha incorretos";
 				endif;
 			else:
-				$_SESSION['mensagem'] = "Email incorretos";
+				$_SESSION['mensagem'] = "Email/Senha incorretos";
 			endif;
 		}
 	}
