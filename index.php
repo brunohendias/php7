@@ -8,12 +8,11 @@
 	<style>.bordaForm{border: 1px solid #999;border-radius: 10px;}</style>
 </head>
 <body>
-	<li style='width: 35px;height: 35px;border-radius: 20px;background-image: url("https://linuxacademy.com/site-content/themes/linux/img/generic-blog-post/default-img.png")';></li>
 	<nav class="navbar navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">Shopping</a>
 		<ul class="nav">
 			<li class="nav-item">
-				<?php session_start();if(isset($_SESSION['user'])):echo "<li style='width: 35px;height: 35px;border-radius: 20px;background-image: url('https://img.freepik.com/vetores-gratis/conceito-de-upload-de-imagem-para-a-pagina-de-destino_52683-22559.jpg?size=338&ext=jpg');'></li> "."<span class='nav-link' style='color: white;'>".$_SESSION['user']."</span>";endif; ?>
+				<?php session_start();if(isset($_SESSION['user'])):echo "<li style='width: 35px;height: 35px;border-radius: 20px;background-color: white;'></li> "."<span class='nav-link' style='color: white;'>".$_SESSION['user']."</span>";endif; ?>
 			</li>
 		</ul>
 	</nav>
